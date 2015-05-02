@@ -22,5 +22,5 @@ $.getJSON('/histogram', function(response) {
 		    ]
 		};
 
-		var myNewChart = new Chart(ctx).Line(data);
+		var myNewChart = new Chart(ctx).Bar(data);
     });
