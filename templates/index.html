@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <title>Melate</title>
-</head>
-<body>
-    <ul id="navigation">
-    {% for item in navigation %}
-        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
-    {% endfor %}
-    </ul>
-
-    <h1>My Webpage</h1>
-    {{ a_variable }}
-
-    {# a comment #}
-</body>
+  </head>
+  <body>
+    <h3>Histograma de la historia del melate</h3>
+    <canvas id="myChart" width="1000" height="400"></canvas>
+  </body>
+  	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </html>
