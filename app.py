@@ -26,7 +26,15 @@ def todos():
 	for row in dataset:
 		for i in range(2, 9):
 			entries[int(row[i])] += 1
-	return jsonify(histogram=entries)
+
+	histogram = {}
+
+	for idx, val in enumerate(entries):
+		histogram[idx] = val
+
+	del histogram[0]
+	
+	return jsonify(histogram=histogram)
 
 if __name__ == "__main__":
 	handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)

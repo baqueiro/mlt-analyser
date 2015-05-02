@@ -9,7 +9,7 @@ $.getJSON('/histogram', function(response) {
 		var ctx = document.getElementById("myChart").getContext("2d");
 
 		var data = {
-		    labels: range(0,57),
+		    labels: range(1,56),
 		    datasets: [
 		        {
 		            label: "Histograma",
