@@ -3,8 +3,24 @@
     <title>Melate</title>
   </head>
   <body>
+    <i>Es m&aacute;s probable que me caiga un rayo a ganar el melate ;)</i>
     <h3>Histograma de la historia del melate</h3>
     <canvas id="myChart" width="1000" height="400"></canvas>
+    <h3>Los más que han aparecido</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>N&uacute;mero</th>
+          <th>Frecuencia</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: mostFrecuency">
+        <tr>
+          <td data-bind="text: key"></td>
+          <td data-bind="text: value"></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
   	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
