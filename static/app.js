@@ -6,6 +6,7 @@ function range(start, count) {
     };
 
 $.getJSON('/histogram', function(response) {
+	Chart.defaults.global.responsive = true;
 		var ctx = document.getElementById("myChart").getContext("2d");
 
 		var data = {

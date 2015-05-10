@@ -1,29 +1,40 @@
 <html>
   <head>
     <title>Melate</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
   </head>
   <body>
-    <i>Es m&aacute;s probable que me caiga un rayo a ganar el melate ;)</i>
-    <h3>Histograma de la historia del melate</h3>
-    <canvas id="myChart" width="1000" height="400"></canvas>
-    <h3>Los más que han aparecido</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>N&uacute;mero</th>
-          <th>Frecuencia</th>
-        </tr>
-      </thead>
-      <tbody data-bind="foreach: mostFrecuency">
-        <tr>
-          <td data-bind="text: key"></td>
-          <td data-bind="text: value"></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <i>Es m&aacute;s probable que me caiga un rayo a ganar el melate ;)</i>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3><small>Histograma de la historia del melate</small></h3>
+        </div>
+        <div class="panel-body">
+          <canvas id="myChart" width="1000" height="400"></canvas>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3><small>Los más que han aparecido</small></h3>
+        </div>
+        <div class="panel-body">
+
+          <div data-bind="foreach: mostFrecuency">
+
+            <div class="col-md-2 col-sm-3 col-xs-3">
+              <span data-bind="text: key"></span>:&nbsp;<em><span data-bind="text: value"></span></em>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    </div>
   </body>
-  	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </html>
