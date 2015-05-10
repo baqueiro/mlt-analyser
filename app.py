@@ -8,12 +8,32 @@ from logging.handlers import RotatingFileHandler
 
 app = Flask (__name__)
 
-#fun var
+#input
 
 dataset = tablib.Dataset()
 with open(os.path.join(os.path.dirname(__file__), 'input', 'Melate.csv')) as f:
     dataset.csv = f.read()
 
+#functions
+
+def getHistogram():
+	entries = [0] * 57
+
+	for row in dataset:
+		for i in range(2, 9):
+			entries[int(row[i])] += 1
+
+	histogram = {}
+
+	for idx, val in enumerate(entries):
+		histogram[idx] = val
+
+	del histogram[0]
+
+	return histogram
+
+
+#slack routes
 
 @app.route("/")
 def index():
@@ -22,38 +42,14 @@ def index():
 #devolvemos cada número y la cantidad de veces que fue como resultado del melate, sin el adicional
 @app.route('/histogram')
 def histogram():
-	entries = [0] * 57
-
-	for row in dataset:
-		for i in range(2, 9):
-			entries[int(row[i])] += 1
-
-	histogram = {}
-
-	for idx, val in enumerate(entries):
-		histogram[idx] = val
-
-	del histogram[0]
+	histogram = getHistogram()
 	
 	return jsonify(histogram=histogram)
 
 @app.route('/histogram/order')
 def histOrder():
 
-	#Aún no se cómo usar funciones :P
-
-	entries = [0] * 57
-
-	for row in dataset:
-		for i in range(2, 9):
-			entries[int(row[i])] += 1
-
-	histogram = {}
-
-	for idx, val in enumerate(entries):
-		histogram[idx] = val
-
-	del histogram[0]
+	histogram = getHistogram()
 
 	sorted_x = sorted(histogram.items(), key=operator.itemgetter(1), reverse=True)
 
