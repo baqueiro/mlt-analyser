@@ -16,11 +16,13 @@ with open(os.path.join(os.path.dirname(__file__), 'input', 'Melate.csv')) as f:
 
 #functions
 
+#Obtenemos el histograma
 def getHistogram():
 	entries = [0] * 57
 
 	for row in dataset:
 		for i in range(2, 9):
+			#print(row[i])
 			entries[int(row[i])] += 1
 
 	histogram = {}
@@ -32,6 +34,17 @@ def getHistogram():
 
 	return histogram
 
+#Busqueda con exactamente esos elementos, sé que es muy burdo, pero con esto estoy aprendiendo python
+def atLeastOne(arr):
+	for row in dataset:
+
+		allSame = True
+		for i in range(2, 9):
+			if arr[i-2] != row[i]:
+				allSame = False
+		if allSame == True:
+			return row[10]
+	return "None"
 
 #slack routes
 
